@@ -14,7 +14,7 @@ The actual optimization routine is implemented by an `AbstractSGD` object.
 
 Values of the outcome are predicted with `predict(l::Learner, x::DSMat{Float64})`. The `predict!(obj::Learner, pr::Vector{Float64}, x::DSMat{Float64})` method calculates predictions in place.
 
-Features (`x`) can be either a dense or sparse matrix. (`DSMat{T}` is an alias for `Matrix{T}` or `SparseMatrixCSC{T, Ti <: Integer}`)
+Features (`x`) can be either a dense or sparse matrix. (`DSMat{T}` is an alias for `DenseMatrix{T}` or `SparseMatrixCSC{T, Ti <: Integer}`)
 
 ### Available learners
 

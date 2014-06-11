@@ -11,7 +11,7 @@ abstract Learner
 # update!{T<:FloatingPoint}(obj::Learner{T}, x::Matrix{T}, y::Vector{T})
 #and possibly additional kw args
 
-typealias DSMat{Tv, Ti <: Integer} Union(Matrix{Tv}, SparseMatrixCSC{Tv, Ti})
+typealias DSMat{Tv, Ti <: Integer} Union(DenseMatrix{Tv}, SparseMatrixCSC{Tv, Ti})
 
 predict(obj::Learner, x::DSMat; kwargs...) =
 	predict!(obj, Array(eltype(x), size(x,1)), x; kwargs...)
