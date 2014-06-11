@@ -1,7 +1,7 @@
 # OnlineLearning
 
 [![Build Status](https://travis-ci.org/lendle/OnlineLearning.jl.svg?branch=master)](https://travis-ci.org/lendle/OnlineLearning.jl)
-[![Coverage Status](https://coveralls.io/repos/lendle/OnlineLearning.jl/badge.png)](https://coveralls.io/r/lendle/OnlineLearning.jl)
+[![Coverage Status](https://img.shields.io/coveralls/lendle/OnlineLearning.jl.svg)](https://coveralls.io/r/lendle/OnlineLearning.jl)
 
 An implementation of online mini-batch learning for prediction in julia.
 
