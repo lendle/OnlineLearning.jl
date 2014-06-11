@@ -1,7 +1,7 @@
 # OnlineLearning
 
 [![Build Status](https://img.shields.io/travis/lendle/OnlineLearning.jl.svg?style=flat)](https://travis-ci.org/lendle/OnlineLearning.jl)
-[![Coverage Status](https://img.shields.io/coveralls/lendle/OnlineLearning.jl.svg)](https://coveralls.io/r/lendle/OnlineLearning.jl)
+[![Coverage Status](https://img.shields.io/coveralls/lendle/OnlineLearning.jl.svg?style=flat)](https://coveralls.io/r/lendle/OnlineLearning.jl)
 
 An implementation of online mini-batch learning for prediction in julia.
 
@@ -46,7 +46,9 @@ The `AbstractSGD` instance stores tuning parameters and step information, and ma
 
 ## Notes
 
-This is a work in progress.
+This is a work in progress. Most testing has been in simulations and not with real data. `GLMLearner` and `GLMNetLearner` with l_2 regularization seem to work pretty well. `GLMNetLearner` with l_1 regularization has not been thoroughly tested. Statistical performance tends to be pretty senstive to choice of optimizer and tuning parameters.
+
+
 
 ### TODO
 
@@ -57,4 +59,5 @@ This is a work in progress.
 * More checking of data
 * Automatic bounding for predictions
 * Remove GLMLearner in favor of GLMNetLearner
-
+* Better docs
+* Eliminate extra memory allocation
