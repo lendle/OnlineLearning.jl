@@ -1,5 +1,12 @@
-using OnlineLearning
-using Base.Test
+module TestOnlineLearning
 
-# write your own tests here
-@test 1 == 1
+using OnlineLearning, Base.Test
+
+my_tests = ["test_glm.jl"]
+
+
+for my_test in my_tests
+  include(my_test)
+end
+
+end
