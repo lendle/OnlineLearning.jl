@@ -18,7 +18,7 @@ linpred(obj::AbstractGLMLearner, x::DSMat{Float64}; offset=emptyvector(Float64))
     linpred!(obj, Array(Float64, size(x, 1)), x, offset=offset)
 
 loss(obj::AbstractGLMLearner, x::DSMat{Float64}, y::Vector{Float64}; offset=emptyvector(Float64)) =
-    loss(obj.m, predict(obj, x), y)
+    loss(obj.m, predict(obj, x, offset=offset), y)
 
 ################################
 ## GLM without regularization ##
@@ -57,9 +57,13 @@ function init!(obj::GLMLearner, p)
     obj
 end
 
-function update!(obj::GLMLearner, x::DSMat{Float64}, y::Vector{Float64}; offset=emptyvector(Float64))
+function update!(obj::GLMLearner, x::DSMat{Float64}, y::Vector{Float64}; offset=emptyvector(Float64), scratch=emptyvector(Float64))
     obj.initialized || init!(obj, size(x, 2))
-    grad!(obj.m, obj.gr, which_weights(obj.optimizer, obj.coefs), x, y, offset=offset)
+    if length(scratch) == length(y)
+        grad_scratch!(obj.m, obj.gr, which_weights(obj.optimizer, obj.coefs), x, y, scratch, offset=offset)
+    else
+        grad!(obj.m, obj.gr, which_weights(obj.optimizer, obj.coefs), x, y, offset=offset)
+    end
     update!(obj.optimizer, obj.coefs, obj.gr)
     obj
 end
