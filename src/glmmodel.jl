@@ -45,7 +45,7 @@ function grad_scratch!(m::GLMModel,
                       offset::Vector{Float64} = emptyvector(Float64))
     predict!(m, resid, coefs, x; offset=offset)
     subtract!(resid, y) # resid = prediction - y
-    alpha = 2.0/size(x, 1)
+    alpha = 1.0/size(x, 1)
     At_mul_B!(alpha, x, resid, 0.0, gr)
     #BLAS.gemv!('T', alpha, x, resid, 0.0, gr) #grad \propto x'resid = -x'(y - pred)
     gr
@@ -63,7 +63,7 @@ grad!(m::GLMModel,
 #########
 type LinearModel <: GLMModel end
 
-loss(m::LinearModel, pr::DenseVector{Float64}, y::Vector{Float64}) = meansqdiff(pr, y)
+loss(m::LinearModel, pr::DenseVector{Float64}, y::Vector{Float64}) = meansqdiff(pr, y)/2
 
 
 #########################

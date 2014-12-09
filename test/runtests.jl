@@ -1,6 +1,7 @@
 module TestOnlineLearning
 
 using OnlineLearning, Base.Test
+using Calculus
 
 my_tests = ["test_glm.jl"]
 
